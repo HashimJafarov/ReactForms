@@ -5,32 +5,10 @@
   text-decoration: none;
   list-style: none;
 }
-body {
-  background-color: teal;
-}
-.ant-space {
+.form_space {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.ant-form {
-  margin-top: 50px;
-  width: 500px;
-  height: 600px;
-  background-color: #fff;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   flex-direction: column;
-}
-.ant-row {
-  display: block;
-}
-.ant-form-item-label {
-  text-align: start !important;
-}
-.ant-form-item-label label::after {
-  display: none;
 }
