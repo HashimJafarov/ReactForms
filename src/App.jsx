@@ -5,6 +5,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import Text from "./components/Text";
+import Swal from "sweetalert2";
+
+// const Swal = require("sweetalert2");
 function App() {
   const [icons, setIcons] = useState(false);
   const schema = yup.object().shape({
@@ -26,9 +29,20 @@ function App() {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = (data) => {
-    console.log(data);
+    reset();
+    setIcons(false);
+    Swal.fire({
+      title: "Your form has send successfully",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
   };
   const onFailed = () => {
     if (errors) {
@@ -37,14 +51,13 @@ function App() {
       setIcons(false);
     }
   };
-  console.log(icons);
   return (
     <section className="form_space">
       {errors.username ||
       errors.lastname ||
       errors.email ||
       errors.phonenumber ? (
-        <Text/>
+        <Text />
       ) : null}
       <Form onFinish={handleSubmit(onSubmit)} layout="vertical" size="large">
         <Form.Item
